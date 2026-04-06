@@ -1,13 +1,34 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link } from 'react-router';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Register = () => {
+    const {createUser} = use(AuthContext);
+
+    const handelCreatUser=(e)=>{
+        e.preventDefault();
+        const name = e.target.name.value;
+        const photo = e.target.photo.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        createUser(email,password)
+        .then(result =>{
+            console.log(result.user);
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+
+        console.log(name,photo,email,password);
+
+    }
+    
     return (
          <div className='min-h-screen mx-auto flex justify-center items-center'>
         <div className="card bg-base-100  w-full max-w-sm shrink-0 shadow-2xl">
          <h1 className="text-5xl font-bold text-center">Register now!</h1>
       <div className="card-body">
-       <form >
+       <form onSubmit={handelCreatUser}>
           <fieldset className="fieldset">
           <label className="label">Name</label>
           <input type="text" name='name' className="input" placeholder="Enter your name" required />
@@ -17,7 +38,7 @@ const Register = () => {
           <input type="email" name='email' required className="input" placeholder="Email" />
           <label className="label">Password</label>
           <input type="password" required name='password' className="input" placeholder="Password" />
-          <button className="btn btn-neutral mt-4">Register now !</button>
+          <button type='submit' className="btn btn-neutral mt-4">Register now !</button>
           <p>Already have an account ? <Link to='/login' className='text-blue-500 underline'>Login Now !</Link> </p>
         </fieldset>   
        </form>
