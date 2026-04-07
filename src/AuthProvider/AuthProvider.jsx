@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from '../FireBase/firebase.config';
 
 export const AuthContext = createContext();
@@ -7,17 +7,22 @@ export const auth = getAuth(app);
 export const provider = new GoogleAuthProvider();
 const AuthProvider = ({children}) => {
 
+
+
     const [user,setUser]=useState(null);
     const [error,setError]=useState("");
     const [loading,setLoading]=useState(true);
 
     const createUser = (email,password)=>{
+        setLoading(false);
         return createUserWithEmailAndPassword(auth,email,password)
     }
-    const updateUserProfile =(displayName,photoURL)=>{
-        updateProfile(auth.currentUser,{
+    const updateUserProfile =(displayName,photoURL,email)=>{
+       return updateProfile(auth.currentUser,{
             displayName,
-            photoURL
+            photoURL,
+            email
+           
         })
     }
     const SignInUser =(email,password)=>{
@@ -29,7 +34,9 @@ const AuthProvider = ({children}) => {
     const signInGoogle = ()=>{
         return signInWithPopup(auth,provider)
     }
-
+    const ForgatePassword =(email)=>{
+        return sendPasswordResetEmail(auth,email)
+    }
     useEffect(()=>{
        const unSubscribe=onAuthStateChanged(auth,(current)=>{
             setUser(current);
@@ -39,7 +46,9 @@ const AuthProvider = ({children}) => {
             unSubscribe();
         }
     },[])
-    // console.log(user);
+
+   
+    
     const value ={
         user,
         setUser,
@@ -53,7 +62,9 @@ const AuthProvider = ({children}) => {
         signInGoogle,
         loading,
         setLoading,
-        updateUserProfile
+        updateUserProfile,
+        ForgatePassword
+      
     }
 
     return <AuthContext value={value} >

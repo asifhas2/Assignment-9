@@ -25,7 +25,11 @@ const Navber = () => {
             }
         </li>
         <li><NavLink to='/register'>Registration</NavLink></li>
-        <li><NavLink>My-Profile</NavLink></li>
+        <li>
+            {
+                user && <NavLink to='/profile'>My-Profile</NavLink>
+            }
+        </li>
     </>
     return (
         <div className="navbar bg-base-100 shadow-sm sticky top-0 bg-white shadow-md z-50">

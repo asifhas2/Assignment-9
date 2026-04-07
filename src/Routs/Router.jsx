@@ -6,6 +6,9 @@ import Details from "../Compotents/Details";
 import Register from "../Pages/Register";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../Compotents/ErrorPage";
+import AllProducts from "../Pages/AllProducts";
+import Profile from "../Pages/Profile";
+import ForgatePassword from "../Pages/ForgatePassword";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +30,13 @@ const router = createBrowserRouter([
         Component: Register,
       },
       {
+        path:'/Products',
+        element:<PrivateRoute>
+            <AllProducts></AllProducts>
+        </PrivateRoute>,
+        loader: () => fetch("/popular-toys.json")
+      },
+      {
         path: "/details/:id",
         element: (
           <PrivateRoute>
@@ -36,6 +46,16 @@ const router = createBrowserRouter([
         loader: () => fetch("/popular-toys.json"),
          hydrateFallbackElement:<span className="loading loading-ring loading-md"></span>
       },
+      {
+        path:'/profile',
+        element:<PrivateRoute>
+            <Profile></Profile>
+        </PrivateRoute>
+      },
+      {
+        path:'/forgot',
+        Component:ForgatePassword
+      }
     ],
   },
   {

@@ -2,8 +2,10 @@ import React, { use } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
+import useTitle from '../hooks/useTitle';
 
 const Register = () => {
+     useTitle("Register | Toy Store");
     const {createUser,error,setError,signInGoogle,updateUserProfile} = use(AuthContext);
     const handelSignInGoogle =()=>{
         console.log("clicked");
@@ -69,7 +71,7 @@ const Register = () => {
           <label className="label">Password</label>
           <input type="password" required name='password' className="input" placeholder="Password" />
           <button type='submit' className="btn btn-neutral mt-4">Register now !</button>
-          <p className='text-red-600'>{error}</p>
+          <p className='text-red-600'>{error?.message}</p>
           <p>Already have an account ? <Link to='/login' className='text-blue-500 underline'>Login Now !</Link> </p>
         </fieldset>   
        </form>
