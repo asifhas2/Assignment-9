@@ -1,16 +1,54 @@
-# React + Vite
+Project Name
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Toy Store
 
-Currently, two official plugins are available:
+Project Purpose
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This is a React-based Toy Store web application where users can browse toys, view details, and manage their profile. The project includes authentication, protected routes, and Firebase integration for secure user management.
 
-## React Compiler
+Live URL
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+https://glowing-figolla-d7b77e.netlify.app/
 
-## Expanding the ESLint configuration
+Key Features
+User authentication (Register / Login)
+Google login integration
+Protected routes (private pages)
+My Profile page (view and update user info)
+Update profile using Firebase updateProfile()
+Show / hide password toggle feature
+Forgot password system with email reset
+Responsive design for all devices
+Toast notifications for better user experience
+Animation support (AOS or Swiper)
+Technologies Used
+React
+React Router
+Firebase Authentication
+Tailwind CSS
+DaisyUI
+React Toastify
+React Icons
+AOS or Swiper
+Other React npm packages
+Installation & Setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+npm install
+npm run dev
+
+Project Structure
+Authentication system handled with Firebase
+Context API used for user state management
+Protected routes implemented using React Router
+Profile update handled with Firebase updateProfile()
+Form validation included for secure user input
+Future Improvements
+Add admin dashboard
+Add product filtering system
+Add cart functionality
+Improve UI animations
+Optimize performance
+Author
+
+Name: Md Asif Hasan
+Email: ak1247942@gmail.com
