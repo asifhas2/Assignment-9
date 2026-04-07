@@ -3,14 +3,14 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Profile = () => {
   const { user, updateUserProfile, setUser } = use(AuthContext);
-  console.log(user);
+//   console.log(user);
   const handelUpdateUserProfile = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const photo = e.target.photo.value;
     updateUserProfile(name, photo)
       .then(() => {
-        console.log("update profile");
+        // console.log("update profile");
         setUser({
           ...user,
           displayName: name,
@@ -18,9 +18,9 @@ const Profile = () => {
         });
       })
       .catch((error) => {
-        console.log(error.message);
+        // console.log(error.message);
       });
-    console.log(name, email, photo);
+    // console.log(name, email, photo);
   };
 
   return (

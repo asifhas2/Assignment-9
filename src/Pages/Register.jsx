@@ -9,11 +9,11 @@ const Register = () => {
     const {createUser,error,setError,signInGoogle,updateUserProfile} = use(AuthContext);
     const handelSignInGoogle =()=>{
         setError("")
-        console.log("clicked");
+        // console.log("clicked");
         signInGoogle()
         .then(result =>{
               toast("Login Successful");
-            console.log(result.user);
+            // console.log(result.user);
         })
         .catch((error)=>{
             setError(error.message);
@@ -41,18 +41,18 @@ const Register = () => {
             toast("Register Successfully Done !");
             updateUserProfile(name,photo)
             .then((result)=>{
-                console.log(result.user);
+                // console.log(result.user);
             })
             .catch(error =>{
                 setError(error.message);
             })
-            console.log(result.user);
+            // console.log(result.user);
         })
         .catch(error =>{
             setError(error.message);
         })
 
-        console.log(name,photo,email,password);
+        // console.log(name,photo,email,password);
 
     }
     

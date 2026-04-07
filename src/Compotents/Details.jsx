@@ -20,12 +20,12 @@ const Details = () => {
 
   const handelSubmit =(e)=>{
     e.preventDefault();
-    console.log("clicked");
+    // console.log("clicked");
     toast("Successfully Completed !");
     
   }
 
-  console.log(details, id);
+//   console.log(details, id);
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col  lg:flex-row">

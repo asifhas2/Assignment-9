@@ -11,10 +11,10 @@ const ForgatePassword = () => {
     ForgatePassword(email)
     .then((result)=>{
         toast("forgot password successful,check your email")
-        console.log("forgot password successful");
+        // console.log("forgot password successful");
     })
     .catch(error=>{
-        console.log(error.message);
+        // console.log(error.message);
     })
   };
   return (

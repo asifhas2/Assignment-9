@@ -10,7 +10,7 @@ const Login = () => {
   const { SignInUser, error, setError, signInGoogle } = use(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
+//   console.log(location);
 
   const handelSignInBtn = (e) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ const Login = () => {
         setError("");
         toast("Login Successful");
         navigate(`${location.state ? location.state : "/"}`);
-        console.log(result.user);
+        // console.log(result.user);
       })
       .catch((error) => {
         setError(error.message);
@@ -30,12 +30,12 @@ const Login = () => {
   };
 
   const handelSignInGoogle = () => {
-    console.log("clicked");
+    // console.log("clicked");
     signInGoogle()
       .then((result) => {
         toast("Login Successful");
         navigate(`${location.state ? location.state : "/"}`);
-        console.log(result.user);
+        // console.log(result.user);
       })
       .catch((error) => {
         setError(error.message);

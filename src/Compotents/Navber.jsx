@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 const Navber = () => {
     const {user,signOutUser}=use(AuthContext);
-    console.log(user);
+    // console.log(user);
 
     const handelSignOut =()=>{
         signOutUser();
