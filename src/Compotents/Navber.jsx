@@ -26,9 +26,9 @@ const Navber = () => {
         </li>
         <li><NavLink to='/register'>Registration</NavLink></li>
         <li>
-            {
-                user && <NavLink to='/profile'>My-Profile</NavLink>
-            }
+            
+                 <NavLink to='/profile'>My-Profile</NavLink>
+            
         </li>
     </>
     return (
