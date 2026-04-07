@@ -8,6 +8,7 @@ const Register = () => {
      useTitle("Register | Toy Store");
     const {createUser,error,setError,signInGoogle,updateUserProfile} = use(AuthContext);
     const handelSignInGoogle =()=>{
+        setError("")
         console.log("clicked");
         signInGoogle()
         .then(result =>{
@@ -36,14 +37,14 @@ const Register = () => {
         }
         createUser(email,password)
         .then(result =>{
-            setError()
+            setError("")
             toast("Register Successfully Done !");
             updateUserProfile(name,photo)
             .then((result)=>{
                 console.log(result.user);
             })
             .catch(error =>{
-                setError(error);
+                setError(error.message);
             })
             console.log(result.user);
         })
@@ -71,7 +72,9 @@ const Register = () => {
           <label className="label">Password</label>
           <input type="password" required name='password' className="input" placeholder="Password" />
           <button type='submit' className="btn btn-neutral mt-4">Register now !</button>
-          <p className='text-red-600'>{error?.message}</p>
+            {
+                error &&  <p className='text-red-600'>{error}</p>
+            }
           <p>Already have an account ? <Link to='/login' className='text-blue-500 underline'>Login Now !</Link> </p>
         </fieldset>   
        </form>
