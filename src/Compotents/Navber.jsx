@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { use, useState } from 'react';
 import { NavLink } from 'react-router';
+import { auth, AuthContext } from '../AuthProvider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Navber = () => {
+    const {user,signOutUser}=use(AuthContext);
+    console.log(user);
+
+    const handelSignOut =()=>{
+        signOutUser();
+        toast("Logout successful");
+    }
+
+ 
+
+
+
     const link = <>
     
         <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/login'>Login</NavLink></li>
+        <li>
+            {
+                user ? <NavLink to='/' onClick={handelSignOut}>Logout</NavLink>:<NavLink to='/login'>Login</NavLink>
+            }
+        </li>
         <li><NavLink to='/register'>Registration</NavLink></li>
         <li><NavLink>My-Profile</NavLink></li>
     </>
@@ -22,7 +40,7 @@ const Navber = () => {
         {link}
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
+    <a className="btn btn-ghost text-xl">Toy-Store</a>
   </div>
  
   <div className="navbar-end">
@@ -31,7 +49,12 @@ const Navber = () => {
       {link}
     </ul>
   </div>
-    <a className="btn">Button</a>
+        {
+            user &&  <div className='flex justify-center items-center gap-3'>
+     <img className='h-10 object-center  w-10 rounded-full' src={user?.photoURL} alt="" />
+   <h2 className='text-[20px] font-semibold]'>{user?.displayName}</h2>
+ </div>
+        }
   </div>
 </div>
     );
