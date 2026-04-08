@@ -19,7 +19,9 @@ const router = createBrowserRouter([
         index: true,
         Component: Home,
         loader: () => fetch("/popular-toys.json"),
-        hydrateFallbackElement:<span className="loading loading-ring loading-md"></span>
+        hydrateFallbackElement: (
+          <span className="loading loading-ring loading-md"></span>
+        ),
       },
       {
         path: "/login",
@@ -30,11 +32,13 @@ const router = createBrowserRouter([
         Component: Register,
       },
       {
-        path:'/Products',
-        element:<PrivateRoute>
+        path: "/Products",
+        element: (
+          <PrivateRoute>
             <AllProducts></AllProducts>
-        </PrivateRoute>,
-        loader: () => fetch("/popular-toys.json")
+          </PrivateRoute>
+        ),
+        loader: () => fetch("/popular-toys.json"),
       },
       {
         path: "/details/:id",
@@ -44,23 +48,27 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: () => fetch("/popular-toys.json"),
-         hydrateFallbackElement:<span className="loading loading-ring loading-md"></span>
+        hydrateFallbackElement: (
+          <span className="loading loading-ring loading-md"></span>
+        ),
       },
       {
-        path:'/profile',
-        element:<PrivateRoute>
+        path: "/profile",
+        element: (
+          <PrivateRoute>
             <Profile></Profile>
-        </PrivateRoute>
+          </PrivateRoute>
+        ),
       },
       {
-        path:'/forgot',
-        Component:ForgatePassword
+        path: "/forgot",
+        Component: ForgatePassword,
+      },
+      {
+        path: "/*",
+        Component: ErrorPage,
       }
     ],
-  },
-  {
-    path: "/*",
-    Component: ErrorPage,
   },
 ]);
 
