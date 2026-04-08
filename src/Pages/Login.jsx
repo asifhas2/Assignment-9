@@ -68,7 +68,7 @@ const Login = () => {
               <button type="submit" className="btn btn-neutral mt-4">
                 Login
               </button>
-              <p className="text-red-600">{error?.message}</p>
+              <p className="text-red-600">{error}</p>
               <p>
                 Don't have an account ?{" "}
                 <Link to="/register" className="text-blue-500 underline">
