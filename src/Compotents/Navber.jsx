@@ -1,5 +1,5 @@
 import React, { use, useState } from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import { auth, AuthContext } from '../AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
 
@@ -53,12 +53,14 @@ const Navber = () => {
       {link}
     </ul>
   </div>
-        {
+        <Link to='/profile'>
+          {
             user &&  <div className='flex justify-center items-center gap-3'>
      <img className='h-10 object-center  w-10 rounded-full' src={user?.photoURL} alt="" />
    <h2 className='text-[20px] font-semibold]'>{user?.displayName}</h2>
  </div>
         }
+        </Link>
   </div>
 </div>
     );
